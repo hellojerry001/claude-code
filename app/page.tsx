@@ -1,3 +1,5 @@
+"use client";
+
 import { Sidebar } from "@/components/sidebar";
 import {
   FeatureCard,
@@ -17,7 +19,7 @@ const features = [
   {
     icon: <ResearchIcon />,
     title: "调研分析",
-    description: "调研多个短视频平台，生成汇报PPT",
+    description: "调研多个短视频平台，生成\u6c47\u62a5PPT",
   },
   {
     icon: <DataMiningIcon />,
@@ -33,48 +35,128 @@ const features = [
 
 export default function Home() {
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div
+      style={{
+        display: "flex",
+        height: "100vh",
+        width: "100vw",
+        background: "#EDEFF2",
+        overflow: "hidden",
+        minWidth: 900,
+      }}
+    >
       {/* Sidebar */}
       <Sidebar />
 
-      {/* Main Content */}
-      <main className="flex-1 bg-[#f7f8fc] flex flex-col overflow-hidden">
-        {/* Content Area */}
-        <div className="flex-1 flex flex-col items-center justify-center px-8 pb-8">
-          {/* Hero Section */}
-          <div className="text-center mb-14">
-            <h1 className="text-[42px] font-semibold mb-3 tracking-tight">
-              <span className="text-violet-500">M</span>
-              <span className="text-gray-800">ore </span>
-              <span className="text-violet-500">T</span>
-              <span className="text-gray-800">han </span>
-              <span className="text-violet-500">C</span>
-              <span className="text-gray-800">oding</span>
-              <span className="ml-3 px-2 py-0.5 text-[11px] font-medium text-gray-500 bg-gray-100 border border-gray-200 rounded align-middle">
-                BETA
-              </span>
-            </h1>
-            <p className="text-gray-500 text-[15px]">
-              多场景办公任务，交给 SOLO 搞定
-            </p>
-          </div>
+      {/* Main white rounded container with 8px padding around */}
+      <div
+        style={{
+          flex: 1,
+          padding: "8px 8px 8px 0",
+          display: "flex",
+          flexDirection: "column",
+          minWidth: 0,
+        }}
+      >
+        <div
+          style={{
+            flex: 1,
+            background: "white",
+            borderRadius: 8,
+            display: "flex",
+            flexDirection: "column",
+            overflow: "hidden",
+          }}
+        >
+          {/* Top bar placeholder - 48px height per Figma */}
+          <div style={{ height: 48, flexShrink: 0 }} />
 
-          {/* Feature Cards */}
-          <div className="flex gap-5 mb-10 max-w-[920px]">
-            {features.map((feature, index) => (
-              <FeatureCard
-                key={index}
-                icon={feature.icon}
-                title={feature.title}
-                description={feature.description}
-              />
-            ))}
-          </div>
+          {/* Centered content */}
+          <div
+            style={{
+              flex: 1,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              paddingBottom: 16,
+            }}
+          >
+            {/* Hero */}
+            <div style={{ textAlign: "center", marginBottom: 28 }}>
+              <h1
+                style={{
+                  fontSize: 42,
+                  fontWeight: 600,
+                  lineHeight: "1.2",
+                  marginBottom: 8,
+                  fontFamily: "Inter, sans-serif",
+                  letterSpacing: "-0.01em",
+                }}
+              >
+                <span style={{ color: "#715CFF" }}>M</span>
+                <span style={{ color: "#1A1A1A" }}>ore </span>
+                <span style={{ color: "#715CFF" }}>T</span>
+                <span style={{ color: "#1A1A1A" }}>han </span>
+                <span style={{ color: "#715CFF" }}>C</span>
+                <span style={{ color: "#1A1A1A" }}>oding</span>
+                <span
+                  style={{
+                    display: "inline-block",
+                    verticalAlign: "middle",
+                    marginLeft: 10,
+                    padding: "1px 4px",
+                    fontSize: 10,
+                    fontWeight: 500,
+                    fontFamily: "JetBrains Mono, monospace",
+                    color: "#8A9096",
+                    background: "#EDEFF2",
+                    borderRadius: 2,
+                    outline: "1px solid rgba(77,107,153,0.18)",
+                    outlineOffset: -1,
+                    lineHeight: "15px",
+                  }}
+                >
+                  BETA
+                </span>
+              </h1>
+              <p
+                style={{
+                  fontSize: 15,
+                  color: "#1A1A1A",
+                  fontFamily: "Inter, sans-serif",
+                  fontWeight: 400,
+                  lineHeight: "20px",
+                }}
+              >
+                多场景办公任务，交给 SOLO 搞定
+              </p>
+            </div>
 
-          {/* Chat Input */}
-          <ChatInput />
+            {/* Feature Cards — 860px wide, 4 cards × 203px + gaps */}
+            <div
+              style={{
+                width: 860,
+                display: "flex",
+                gap: 16,
+                marginBottom: 28,
+              }}
+            >
+              {features.map((feature, index) => (
+                <FeatureCard
+                  key={index}
+                  icon={feature.icon}
+                  title={feature.title}
+                  description={feature.description}
+                />
+              ))}
+            </div>
+
+            {/* Chat Input */}
+            <ChatInput />
+          </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 }
